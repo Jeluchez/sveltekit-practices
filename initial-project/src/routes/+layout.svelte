@@ -1,22 +1,23 @@
-<script>
+<script lang="ts">
+	/** @type {import('./$types').LayoutData} */
+	export let data;
+
 	import Header from "./Header.svelte";
 	import "../app.css";
+
+	import { setContext } from "svelte";
+	import { writable } from "svelte/store";
+
+	// Create a store and update it when necessary...
+	const user = writable();
+	$: user.set(data.user);
+
+	// ...and add it to the context for child components to access
+	setContext("user", user);
 </script>
 
 <div class="app">
 	<Header />
-	<form method="POST" action="/login">
-		<p>the main form</p>
-		<label>
-			Email
-			<input name="email" type="email" />
-		</label>
-		<label>
-			Password
-			<input name="password" type="password" />
-		</label>
-		<button>Log in</button>
-	</form>
 	<main>
 		<slot />
 	</main>

@@ -11,7 +11,6 @@
             });
 
             const number = await response.json();
-            console.log(number);
         } catch (error) {
             console.error("Error fetching random number:", error);
         }

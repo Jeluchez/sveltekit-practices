@@ -2,8 +2,6 @@ import { error } from '@sveltejs/kit';
 
 /** @type {import('./$types').RequestHandler} */
 export function GET({ url }:any) {
-	console.log(url);
-	
 	const min = Number(url.searchParams.get('min') ?? '0');
 	const max = Number(url.searchParams.get('max') ?? '1');
 
