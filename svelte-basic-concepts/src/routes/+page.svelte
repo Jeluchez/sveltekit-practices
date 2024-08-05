@@ -1,32 +1,39 @@
-<main class="flex flex-col items-center justify-center h-screen w-full">
-    <div class="flex gap-2">
-        <button class="btn btn-primary">Primary</button>
+<script>
+    import GridTile from "../components/GridTile.svelte";
+    import CollectionCard from "../components/CollectionCard.svelte";
+    import { setContext } from "svelte";
 
-        <div class="dropdown">
-            <div tabindex="0" role="button" class="btn m-1">Click</div>
-            <ul
-                class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
-            >
-                <li><a>Item 1</a></li>
-                <li><a>Item 2</a></li>
-            </ul>
-        </div>
-    </div>
+    let products = [
+        {
+            title: "Cup",
+            cost: "$10",
+            src: "https://cdn.shopify.com/s/files/1/0434/0285/4564/products/Cup-front-black.png?v=1623159405",
+        },
+        {
+            title: "Shirt",
+            cost: "$10",
+            src: "https://cdn.shopify.com/s/files/1/0434/0285/4564/products/short-sleeve-t-shirt-0.png?v=1622902418",
+        },
+    ];
+    let newItems = [
+        {
+            name: "Graphic T",
+            src: "https://cdn.shopify.com/s/files/1/0434/0285/4564/products/Front-NoModel_ec3be051-d579-4c03-b55b-64449d0b0445.png?v=1623255893",
+            price: "$60.00",
+        },
+        {
+            name: "Jacket",
+            src: "https://cdn.shopify.com/s/files/1/0434/0285/4564/products/bomber-jacket-0.png?v=1622902777",
+            price: "$80.00",
+        },
+    ];
 
-    <div>
-        <article class="prose">
-            <h1>Garlic bread with cheese: What the science tells us</h1>
-            <p>
-                For years parents have espoused the health benefits of eating
-                garlic bread with cheese to their children, with the food
-                earning such an iconic status in our culture that kids will
-                often dress up as warm, cheesy loaf for Halloween.
-            </p>
-            <p>
-                But a recent study shows that the celebrated appetizer may be
-                linked to a series of rabies cases springing up around the
-                country.
-            </p>
-        </article>
-    </div>
+    setContext("newItemsContext", newItems);
+</script>
+
+<main>
+    <CollectionCard />
+    {#each products as product}
+        <GridTile {product} />
+    {/each}
 </main>
